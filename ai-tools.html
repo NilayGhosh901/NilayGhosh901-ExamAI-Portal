@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools - ExamAI Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h3>ExamAI Portal</h3>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="resources.html" class="nav-link">Resources</a>
+                <a href="calendar.html" class="nav-link">Calendar</a>
+                <a href="study-plans.html" class="nav-link">Study</a>
+                <a href="ai-tools.html" class="nav-link active">AI Tools</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1 class="page-title">AI-Powered Study Tools</h1>
+            <p class="page-subtitle">Leverage artificial intelligence to optimize your exam preparation</p>
+        </div>
+    </header>
+
+    <!-- AI Tools Content -->
+    <section class="page-content">
+        <div class="container">
+            <div class="ai-tools-grid">
+                <div class="ai-tool-card" data-tool="analyzer">
+                    <div class="tool-icon">🔍</div>
+                    <h3 class="tool-title">Performance Analyzer</h3>
+                    <p class="tool-description">AI analysis of your test performance to identify weak areas</p>
+                </div>
+                <div class="ai-tool-card" data-tool="generator">
+                    <div class="tool-icon">📊</div>
+                    <h3 class="tool-title">Question Generator</h3>
+                    <p class="tool-description">Generate practice questions based on exam patterns and difficulty</p>
+                </div>
+                <div class="ai-tool-card" data-tool="tutor">
+                    <div class="tool-icon">🤖</div>
+                    <h3 class="tool-title">AI Study Assistant</h3>
+                    <p class="tool-description">Get instant answers and explanations for your study queries</p>
+                    <span class="badge badge--coming-soon">Coming Soon</span>
+                </div>
+                <div class="ai-tool-card" data-tool="predictor">
+                    <div class="tool-icon">🎯</div>
+                    <h3 class="tool-title">Score Predictor</h3>
+                    <p class="tool-description">Predict your exam scores based on practice test performance</p>
+                    <span class="badge badge--coming-soon">Coming Soon</span>
+                </div>
+                <div class="ai-tool-card" data-tool="planner">
+                    <div class="tool-icon">📅</div>
+                    <h3 class="tool-title">Smart Study Planner</h3>
+                    <p class="tool-description">AI-powered personalized study schedule based on your goals</p>
+                    <span class="badge badge--coming-soon">Coming Soon</span>
+                </div>
+                <div class="ai-tool-card" data-tool="interview">
+                    <div class="tool-icon">🎤</div>
+                    <h3 class="tool-title">Mock Interview Bot</h3>
+                    <p class="tool-description">Practice interviews with AI for personality tests and vivas</p>
+                    <span class="badge badge--coming-soon">Coming Soon</span>
+                </div>
+                <div class="ai-tool-card" data-tool="doubt">
+                    <div class="tool-icon">💡</div>
+                    <h3 class="tool-title">Doubt Resolver</h3>
+                    <p class="tool-description">Upload images of problems and get instant AI-powered solutions</p>
+                    <span class="badge badge--coming-soon">Coming Soon</span>
+                </div>
+                <div class="ai-tool-card" data-tool="mapper">
+                    <div class="tool-icon">🗺️</div>
+                    <h3 class="tool-title">Concept Mapper</h3>
+                    <p class="tool-description">Visualize topics with AI-generated mind maps and connections</p>
+                    <span class="badge badge--coming-soon">Coming Soon</span>
+                </div>
+                <div class="ai-tool-card" data-tool="tracker">
+                    <div class="tool-icon">📈</div>
+                    <h3 class="tool-title">Progress Tracker</h3>
+                    <p class="tool-description">Track your learning journey with AI-driven insights and metrics</p>
+                    <span class="badge badge--coming-soon">Coming Soon</span>
+                </div>
+                <div class="ai-tool-card" data-tool="vocab">
+                    <div class="tool-icon">📖</div>
+                    <h3 class="tool-title">Vocabulary Builder</h3>
+                    <p class="tool-description">Expand your English vocabulary with AI-curated word lists</p>
+                    <span class="badge badge--coming-soon">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo Section -->
+    <section class="demo">
+        <div class="container">
+            <h2 class="section-title">Try Our AI Study Assistant</h2>
+            <div class="demo-container">
+                <div class="demo-input">
+                    <div class="input-group">
+                        <input type="text" id="ai-input" class="form-control" placeholder="Ask about exam preparation, study tips, or any topic...">
+                        <button class="btn btn--primary" id="submit-query">Ask AI</button>
+                    </div>
+                </div>
+                <div class="demo-response">
+                    <div class="response-header">
+                        <h4>AI Assistant Response:</h4>
+                        <button class="btn btn--outline btn--sm" id="clear-demo">Clear</button>
+                    </div>
+                    <div class="response-content" id="ai-response">
+                        <p class="response-placeholder">Ask me anything about exam preparation and I'll help you!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h4>ExamAI Portal</h4>
+                    <p>© 2025 ExamAI Portal. All rights reserved.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" target="_blank" class="social-link">
+                        <span>GitHub</span>
+                    </a>
+                    <a href="#" target="_blank" class="social-link">
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="#" target="_blank" class="social-link">
+                        <span>Twitter</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
