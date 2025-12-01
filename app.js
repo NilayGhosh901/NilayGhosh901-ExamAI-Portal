@@ -3,7 +3,7 @@ class ThemeManager {
   constructor() {
     this.themeToggle = document.getElementById('theme-toggle');
     this.themeIcon = document.querySelector('.theme-icon');
-    this.currentTheme = 'light';
+    this.currentTheme = localStorage.getItem('theme') || 'light';
     this.init();
   }
 
@@ -16,6 +16,7 @@ class ThemeManager {
     document.documentElement.setAttribute('data-color-scheme', theme);
     this.themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
     this.currentTheme = theme;
+    localStorage.setItem('theme', theme);
   }
 
   toggleTheme() {
@@ -83,6 +84,14 @@ class NavigationManager {
       // Close menu when clicking outside
       document.addEventListener('click', (e) => {
         if (!e.target.closest('.navbar')) {
+          this.mobileMenuToggle.classList.remove('active');
+          this.navLinks.classList.remove('active');
+        }
+      });
+
+      // Handle resize events to reset menu state
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
           this.mobileMenuToggle.classList.remove('active');
           this.navLinks.classList.remove('active');
         }

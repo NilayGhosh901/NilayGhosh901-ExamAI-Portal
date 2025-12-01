@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - ExamAI Portal</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-color-scheme', theme);
+        })();
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -13,7 +19,12 @@
             <div class="nav-brand">
                 <h3>ExamAI Portal</h3>
             </div>
-            <div class="nav-links">
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="nav-links">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="resources.html" class="nav-link">Resources</a>
                 <a href="calendar.html" class="nav-link">Calendar</a>
