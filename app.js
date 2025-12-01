@@ -54,11 +54,40 @@ class TypingAnimation {
 // Navigation and Scrolling
 class NavigationManager {
   constructor() {
+    this.mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    this.navLinks = document.getElementById('nav-links');
     this.init();
   }
 
   init() {
     this.highlightActiveLink();
+    this.setupMobileMenu();
+  }
+
+  setupMobileMenu() {
+    if (this.mobileMenuToggle && this.navLinks) {
+      this.mobileMenuToggle.addEventListener('click', () => {
+        this.mobileMenuToggle.classList.toggle('active');
+        this.navLinks.classList.toggle('active');
+      });
+
+      // Close menu when clicking a link
+      const links = this.navLinks.querySelectorAll('.nav-link');
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+          this.mobileMenuToggle.classList.remove('active');
+          this.navLinks.classList.remove('active');
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.navbar')) {
+          this.mobileMenuToggle.classList.remove('active');
+          this.navLinks.classList.remove('active');
+        }
+      });
+    }
   }
 
   highlightActiveLink() {
