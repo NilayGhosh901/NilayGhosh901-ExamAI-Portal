@@ -552,10 +552,12 @@ class ExamAIPortalApp {
       this.interactiveCardsManager = new InteractiveCardsManager();
       this.scrollAnimationsManager = new ScrollAnimationsManager();
 
-      // Start typing animation with delay
+      // Start typing animation with shorter delay
       setTimeout(() => {
-        this.typingAnimation.start();
-      }, 1000);
+        if (this.typingAnimation && this.typingAnimation.typedTextSpan) {
+          this.typingAnimation.start();
+        }
+      }, 500);
 
       // Add some interactive feedback
       this.addGlobalInteractions();
@@ -590,20 +592,14 @@ class ExamAIPortalApp {
       });
     });
 
-    // Add ripple effect to buttons
-    this.addRippleEffect();
+    // Add ripple effect to buttons (only on desktop)
+    if (window.innerWidth > 768) {
+      this.addRippleEffect();
+    }
 
-    // Add parallax effect to hero section
-    this.addParallaxEffect();
-
-    // Add smooth scroll animations
-    this.addSmoothScrollAnimations();
-
-    // Add card tilt effect
-    this.addCardTiltEffect();
-
-    // Add counter animation for numbers
-    this.addCounterAnimation();
+    // Removed parallax for performance
+    // Removed duplicate scroll animations (already handled by ScrollAnimationsManager)
+    // Removed card tilt for better mobile performance
   }
 
   addRippleEffect() {
@@ -631,93 +627,15 @@ class ExamAIPortalApp {
   }
 
   addParallaxEffect() {
-    const hero = document.querySelector('.hero');
-    if (hero) {
-      window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const rate = scrolled * 0.5;
-        hero.style.transform = `translateY(${rate}px)`;
-      });
-    }
+    // Removed parallax effect for better performance
+    // Parallax was causing lag on mobile devices
   }
 
-  addSmoothScrollAnimations() {
-    // Animate elements on scroll
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
+  // Removed duplicate scroll animations - already handled by ScrollAnimationsManager
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-          }, index * 100);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
+  // Removed card tilt effect for better mobile performance
 
-    // Observe all cards and sections
-    const animatedElements = document.querySelectorAll(
-      '.resource-card, .ai-tool-card, .project-card, .update-card, .exam-item, .category-card'
-    );
-    animatedElements.forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-      observer.observe(el);
-    });
-  }
-
-  addCardTiltEffect() {
-    // Simple hover effect without rotation
-    const cards = document.querySelectorAll('.resource-card, .ai-tool-card, .project-card');
-    cards.forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        card.style.transition = 'transform 0.3s ease';
-        card.style.transform = 'translateY(-8px) scale(1.02)';
-      });
-
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'translateY(0) scale(1)';
-      });
-    });
-  }
-
-  addCounterAnimation() {
-    // Animate numbers if any exist
-    const counters = document.querySelectorAll('[data-count]');
-    counters.forEach(counter => {
-      const target = parseInt(counter.getAttribute('data-count'));
-      const duration = 2000;
-      const increment = target / (duration / 16);
-      let current = 0;
-
-      const updateCounter = () => {
-        current += increment;
-        if (current < target) {
-          counter.textContent = Math.floor(current);
-          requestAnimationFrame(updateCounter);
-        } else {
-          counter.textContent = target;
-        }
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            updateCounter();
-            observer.unobserve(entry.target);
-          }
-        });
-      });
-
-      observer.observe(counter);
-    });
-  }
+  // Removed counter animation - no counters in current design
 }
 
 // Initialize the application
